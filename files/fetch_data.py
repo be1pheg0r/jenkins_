@@ -1,5 +1,6 @@
 from sklearn.datasets import fetch_california_housing
 import pandas as pd
+import os
 
 def load_data():
     return fetch_california_housing()
@@ -12,5 +13,5 @@ def load_as_df():
 
 df = load_as_df()
 
-df.to_csv('data.csv', index=False)
-
+path = os.path.join(os.path.dirname(__file__), 'data.csv')
+df.to_csv(path, index=False)
