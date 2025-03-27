@@ -13,5 +13,5 @@ def load_as_df():
 
 df = load_as_df()
 
-path = os.path.join(os.getcwd(), 'data.csv')
+path = os.path.join(os.getcwd(), 'data/data.csv')
 df.to_csv(path, index=False)
