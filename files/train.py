@@ -8,7 +8,7 @@ import pickle
 
 
 def load_data(path='../data/preprocessed_data.csv'):
-    base_path = os.path.dirname(os.path.abspath(__file__))
+    base_path = os.getcwd()
     path = os.path.join(base_path, path)
     if not os.path.exists(path):
         e_p = '../data/data.csv'
@@ -58,7 +58,10 @@ if __name__ == '__main__':
     report = evaluate_model(model, eval_func, X_test, y_test)
     print(report.split('\n'))
 
-    with open('../models/model.pkl', 'wb') as f:
+    base_path = os.getcwd()
+    path = os.path.join(base_path, 'models/model.pkl')
+
+    with open(path, 'wb') as f:
         pickle.dump(model, f)
         print('Model saved to models/model.pkl')
 
