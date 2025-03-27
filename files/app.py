@@ -21,12 +21,3 @@ def predict(item: Item):
     return {
         'prediction': prediction
     }
-
-if __name__ == '__main__':
-    import subprocess
-
-    command = 'uvicorn app:app --reload'
-
-    subprocess.run(command, shell=True)
-
-    # uvicorn app:app --reload

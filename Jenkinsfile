@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Deploy Model') {
             steps {
-                bat 'start /b python files/app.py'
+                bat 'start /b uvicorn files.app:app --reload'
             }
         }
     }
