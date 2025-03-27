@@ -11,15 +11,14 @@ def load_data():
     file_path = os.path.join(base_path, 'data', 'data.csv')
     return pd.read_csv(file_path)
 
-
 def encode_target(x: pd.Series) -> pd.Series:
-    def get_quantile(x: pd.Series) -> int:
+    def get_quantile(value: float) -> int:
         quantiles = x.quantile([0.25, 0.5, 0.75])
-        if x <= quantiles[0.25]:
+        if value <= quantiles[0.25]:
             return 0
-        elif x <= quantiles[0.5]:
+        elif value <= quantiles[0.5]:
             return 1
-        elif x <= quantiles[0.75]:
+        elif value <= quantiles[0.75]:
             return 2
         else:
             return 3
