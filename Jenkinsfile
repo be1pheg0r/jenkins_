@@ -12,22 +12,34 @@ pipeline {
         }
         stage('Fetch Data') {
             steps {
-                sh 'python3 files/fetch_data.py'
+                sh '''
+                . venv/bin/activate
+                ./venv/bin/python3 files/fetch_data.py
+                '''
             }
         }
         stage('Preprocess Data') {
             steps {
-                sh 'python3 files/preprocess.py'
+                sh '''
+                . venv/bin/activate
+                ./venv/bin/python3 files/preprocess.py
+                '''
             }
         }
         stage('Train Model') {
             steps {
-                sh 'python3 files/train.py'
+                sh '''
+                . venv/bin/activate
+                ./venv/bin/python3 files/train.py
+                '''
             }
         }
         stage('Deploy Model') {
             steps {
-                sh 'uvicorn files.app:app --reload'
+                sh '''
+                . venv/bin/activate
+                ./venv/bin/python3 -m uvicorn files.app:app --reload
+                '''
             }
         }
     }
