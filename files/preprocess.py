@@ -65,4 +65,6 @@ def save_data(df):
     file_path = os.path.join(base_path, 'data/preprocessed_data.csv')
     df.to_csv(file_path, index=False)
 
+    print(f"Data saved to {file_path}")
+
 save_data(df)
