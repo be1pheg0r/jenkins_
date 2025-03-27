@@ -12,14 +12,15 @@ def load_data():
     return pd.read_csv(file_path)
 
 
-def encode_target(y: pd.Series) -> pd.Series:
+def encode_target(df: pd.DataFrame) -> pd.DataFrame:
+    y = df['target']
     quantiles = y.quantile([0.25, 0.5, 0.75])
 
     bins = [-float('inf'), quantiles[0.25], quantiles[0.5], quantiles[0.75], float('inf')]
     labels = [0, 1, 2, 3]
 
-    return pd.cut(y, bins=bins, labels=labels)
-
+    df['target'] = pd.cut(y, bins=bins, labels=labels)
+    return df
 
 def drop_outliers(df: pd.DataFrame) -> pd.DataFrame:
     return df[(df.apply(zscore) < 3).all(axis=1)]
