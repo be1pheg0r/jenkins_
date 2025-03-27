@@ -4,11 +4,11 @@ import pandas as pd
 import os
 
 print("Current working directory:", os.getcwd())
-
+print("Contents of current directory:", os.listdir('/var/jenkins_home/workspace/jenkins'))
 
 def load_data():
     base_path = os.getcwd()
-    file_path = os.path.join(base_path, 'data/data.csv')
+    file_path = os.path.join(base_path, 'data', 'data.csv')
     return pd.read_csv(file_path)
 
 
