@@ -20,6 +20,9 @@ model = load_model()
 @app.post("/predict")
 def predict(item: Item):
     prediction = model.predict(item.data).tolist()
+    print(f"model: {model.__class__.__name__}\n"
+          f"in_data: {item}\n"
+          f"prediction: {prediction}\n")
     return {
         'prediction': prediction
     }
