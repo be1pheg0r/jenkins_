@@ -3,27 +3,27 @@ pipeline {
     stages {
         stage('Setup') {
             steps {
-                sh 'pip install -r requirements.txt'
+                sh 'pip3 install -r requirements.txt'
             }
         }
         stage('Fetch Data') {
             steps {
-                sh 'python files/fetch_data.py'
+                sh 'python3 files/fetch_data.py'
             }
         }
         stage('Preprocess Data') {
             steps {
-                sh 'python files/preprocess.py'
+                sh 'python3 files/preprocess.py'
             }
         }
         stage('Train Model') {
             steps {
-                sh 'python files/train.py'
+                sh 'python3 files/train.py'
             }
         }
         stage('Deploy Model') {
             steps {
-                sh 'start /b uvicorn files.app:app --reload'
+                sh 'uvicorn files.app:app --reload'
             }
         }
     }
