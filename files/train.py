@@ -7,7 +7,7 @@ import os
 import pickle
 
 
-def load_data(path='../data/preprocessed_data.csv'):
+def load_data(path='data/preprocessed_data.csv'):
     base_path = os.getcwd()
     path = os.path.join(base_path, path)
     if not os.path.exists(path):
