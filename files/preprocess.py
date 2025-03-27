@@ -3,6 +3,8 @@ from sklearn.preprocessing import MinMaxScaler
 import pandas as pd
 import os
 
+print("Current working directory:", os.getcwd())
+
 
 def load_data():
     base_path = os.getcwd()
