@@ -7,7 +7,7 @@ import os
 class Item(BaseModel):
     data: List[List[float]]
 
-def load_model(path='../models/model.pkl'):
+def load_model(path='models/model.pkl'):
     base_path = os.getcwd()
     path = os.path.join(base_path, path)
     with open(path, 'rb') as f:
