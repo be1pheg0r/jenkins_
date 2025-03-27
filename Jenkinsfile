@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Setup') {
             steps {
-                sh 'pip3 install -r requirements.txt'
+                sh 'python3 -m venv venv'
+                sh 'source venv/bin/activate && pip install -r requirements.txt'
             }
         }
         stage('Fetch Data') {
