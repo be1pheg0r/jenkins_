@@ -15,17 +15,10 @@ def load_data():
 def encode_target(y: pd.Series) -> pd.Series:
     quantiles = y.quantile([0.25, 0.5, 0.75])
 
-    def encode(x):
-        if x <= quantiles[0.25]:
-            return 0
-        elif x <= quantiles[0.5]:
-            return 1
-        elif x <= quantiles[0.75]:
-            return 2
-        else:
-            return 3
+    bins = [-float('inf'), quantiles[0.25], quantiles[0.5], quantiles[0.75], float('inf')]
+    labels = [0, 1, 2, 3]
 
-    return y.apply(encode)
+    return pd.cut(y, bins=bins, labels=labels)
 
 
 def drop_outliers(df: pd.DataFrame) -> pd.DataFrame:
