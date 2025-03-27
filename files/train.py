@@ -8,8 +8,11 @@ import pickle
 
 
 def load_data(path='../data/preprocessed_data.csv'):
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    path = os.path.join(base_path, path)
     if not os.path.exists(path):
         e_p = '../data/data.csv'
+        e_p = os.path.join(base_path, e_p)
         if not os.path.exists(e_p):
             raise FileNotFoundError(f'Could not find data at {path} or {e_p}')
         else:

@@ -1,10 +1,13 @@
 from scipy.stats import zscore
 from sklearn.preprocessing import MinMaxScaler
 import pandas as pd
+import os
 
 
 def load_data():
-    return pd.read_csv('../data/data.csv')
+    base_path = os.getcwd()
+    file_path = os.path.join(base_path, 'data/data.csv')
+    return pd.read_csv(file_path)
 
 
 def encode_categorical(df):
@@ -64,4 +67,10 @@ def preprocess(df: pd.DataFrame, pipeline: tuple = (
 
 df = load_data()
 df = preprocess(df)
-df.to_csv('../data/preprocessed_data.csv', index=False)
+
+def save_data(df):
+    base_path = os.getcwd()
+    file_path = os.path.join(base_path, 'data/preprocessed_data.csv')
+    df.to_csv(file_path, index=False)
+
+save_data(df)
