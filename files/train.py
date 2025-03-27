@@ -60,6 +60,8 @@ if __name__ == '__main__':
 
     base_path = os.getcwd()
     path = os.path.join(base_path, 'models/model.pkl')
+    if not os.path.exists(os.path.dirname(path)):
+        os.makedirs(os.path.dirname(path))
 
     with open(path, 'wb') as f:
         pickle.dump(model, f)

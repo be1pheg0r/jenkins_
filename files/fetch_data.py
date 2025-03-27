@@ -14,4 +14,6 @@ def load_as_df():
 df = load_as_df()
 
 path = os.path.join(os.getcwd(), 'data/data.csv')
+if not os.path.exists(os.path.dirname(path)):
+    os.makedirs(os.path.dirname(path))
 df.to_csv(path, index=False)
