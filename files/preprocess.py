@@ -12,10 +12,6 @@ def load_data():
     return pd.read_csv(file_path)
 
 
-def encode_categorical(df):
-    return pd.get_dummies(df, columns=['ocean_proximity'])
-
-
 def encode_target(x: pd.Series) -> pd.Series:
     def get_quantile(x: pd.Series) -> int:
         quantiles = x.quantile([0.25, 0.5, 0.75])
@@ -57,7 +53,6 @@ def fill_na(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def preprocess(df: pd.DataFrame, pipeline: tuple = (
-        encode_categorical,
         encode_target,
         drop_outliers,
         normalize,
